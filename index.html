@@ -53,24 +53,46 @@
         .label-title { font-family: 'Montserrat', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 500; opacity: 0.7; margin-bottom: 3px; }
         .label-value { font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 400; letter-spacing: 0.5px; }
         
-        /* КАРКАС ФОТОГРАФИИ ОБЛОЖКИ */
+        /* КАРКАС ФОТОГРАФИИ ОБЛОЖКИ НА КОМПЬЮТЕРЕ */
         .photo-frame { 
             width: 100%; max-width: 310px; height: 400px; margin: 25px auto; 
             border-radius: 160px 160px 0 0; background: url('couple.jpg') center/cover no-repeat; 
             box-shadow: 0 15px 35px rgba(0,0,0,0.1); position: relative; z-index: 3; 
         }
         
-        /* ПРЕДЕЛЬНЫЙ ПОДЪЕМ АРКИ НА САМЫЙ КРАЙ ФОТОГРАФИИ */
+        /* НАСТРОЙКА АРКИ ДЛЯ КОМПЬЮТЕРОВ */
         .photo-frame::after {
             content: ""; position: absolute;
             top: -25px; bottom: 0; left: -25px; right: -25px;
             background-image: url('arch.png'); 
             background-size: 116% auto; 
             background-repeat: no-repeat;
-            /* Сместили узор до -62px для идеального совпадения с верхней кромкой */
             background-position: center -62px;
             pointer-events: none; z-index: 5;
             border-radius: 160px 160px 0 0;
+        }
+
+        /* УМНАЯ АДАПТАЦИЯ АРКИ ДЛЯ ТЕЛЕФОНОВ (МЕДИА-ЗАПРОС) */
+        @media (max-width: 1024px) { 
+            .scroll-block { padding: 120px 15px; } 
+            .exact-frame-container { top: 15px; bottom: 15px; left: 15px; right: 15px; width: calc(100% - 30px); height: calc(100% - 30px); } 
+            .flower-garland { width: 260px; height: 85px; } 
+            h1 { font-size: 2.5rem; } h2 { font-size: 1.8rem; } 
+            
+            /* Пропорции рамки фото на мобильном телефоне */
+            .photo-frame { width: 100%; max-width: 280px; height: 360px; margin: 25px auto; border-radius: 140px 140px 0 0; } 
+            
+            /* Идеальная автоматическая посадка узора арки на мобильном экране */
+            .photo-frame::after { 
+                top: -20px; left: -20px; right: -25px;
+                background-size: 117% auto; 
+                background-position: center -42px; 
+                border-radius: 140px 140px 0 0;
+            } 
+            
+            .location-grid { flex-direction: column; gap: 25px; padding: 0 15px 20px 15px; } 
+            .location-text { margin-top: 0; } 
+            .location-photo { width: 100%; max-width: 440px; height: 240px; } 
         }
 
         .location-grid { display: flex; align-items: center; justify-content: space-between; gap: 50px; width: 100%; max-width: 1450px; margin: 0 auto; padding: 0 50px 50px 50px; position: relative; z-index: 3; }
@@ -83,12 +105,6 @@
         .color-circle { width: 60px; height: 60px; border-radius: 50%; box-shadow: 0 8px 20px rgba(0,0,0,0.1); border: 2px solid #fff; transition: transform 0.3s; }
         .color-circle:hover { transform: scale(1.1); }
         .color-name { font-size: 0.75rem; text-transform: uppercase; font-weight: 500; opacity: 0.8; }
-
-        .zoom-block { animation: blockZoom 1.4s cubic-bezier(0.25, 1, 0.5, 1) forwards; }
-        @keyframes blockZoom { from { transform: scale(1.06); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-        .fade-up { opacity: 0; transform: translateY(30px); animation: textFadeUp 1s cubic-bezier(0.25, 1, 0.5, 1) forwards; }
-        .del-1 { animation-delay: 0.3s; } .del-2 { animation-delay: 0.6s; } .del-3 { animation-delay: 0.9s; } .del-4 { animation-delay: 1.2s; }
-        @keyframes textFadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
         
         .timer-grid { display: flex; gap: 15px; margin: 35px 0; position: relative; z-index: 3; }
         .timer-item { background: rgba(255,255,255,0.15); padding: 20px; border-radius: 14px; min-width: 85px; backdrop-filter: blur(5px); box-shadow: 0 6px 20px rgba(0,0,0,0.04); border: 1px solid rgba(255,255,255,0.1); }
@@ -100,7 +116,6 @@
         .radios { display: flex; gap: 25px; margin-top: 6px; }
         .radios label { font-weight: 400; cursor: pointer; display: flex; align-items: center; gap: 6px; font-size: 0.95rem; }
         .submit-btn { width: 100%; padding: 14px; background: var(--txt-choco); color: #fff; border: none; border-radius: 6px; font-size: 0.95rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; }
-        @media (max-width: 1024px) { .scroll-block { padding: 120px 15px; } .exact-frame-container { top: 15px; bottom: 15px; left: 15px; right: 15px; width: calc(100% - 30px); height: calc(100% - 30px); } .flower-garland { width: 260px; height: 85px; } h1 { font-size: 2.5rem; } h2 { font-size: 1.8rem; } .photo-frame { height: 350px; } .location-grid { flex-direction: column; gap: 25px; padding: 0 15px 20px 15px; } .location-text { margin-top: 0; } .location-photo { width: 100%; max-width: 440px; height: 240px; } }
     </style>
 </head>
 <body>
