@@ -53,14 +53,14 @@
         .label-title { font-family: 'Montserrat', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 500; opacity: 0.7; margin-bottom: 3px; }
         .label-value { font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 400; letter-spacing: 0.5px; }
         
-        /* КАРКАС ФОТОГРАФИИ ОБЛОЖКИ НА КОМПЬЮТЕРЕ */
+        /* КАРКАС ФОТОГРАФИИ ОБЛОЖКИ ДЛЯ ПК */
         .photo-frame { 
             width: 100%; max-width: 310px; height: 400px; margin: 25px auto; 
             border-radius: 160px 160px 0 0; background: url('couple.jpg') center/cover no-repeat; 
             box-shadow: 0 15px 35px rgba(0,0,0,0.1); position: relative; z-index: 3; 
         }
         
-        /* НАСТРОЙКА АРКИ ДЛЯ КОМПЬЮТЕРОВ */
+        /* НАЛОЖЕНИЕ АРКИ ДЛЯ ВЕРСИИ ПК */
         .photo-frame::after {
             content: ""; position: absolute;
             top: -25px; bottom: 0; left: -25px; right: -25px;
@@ -72,25 +72,19 @@
             border-radius: 160px 160px 0 0;
         }
 
-        /* УМНАЯ АДАПТАЦИЯ АРКИ ДЛЯ ТЕЛЕФОНОВ (МЕДИА-ЗАПРОС) */
+        /* УМНАЯ МОБИЛЬНАЯ АДАПТАЦИЯ (ИСПРАВЛЕНО ВСЁ СМЕЩЕНИЕ БЛОКОВ) */
         @media (max-width: 1024px) { 
-            .scroll-block { padding: 120px 15px; } 
-            .exact-frame-container { top: 15px; bottom: 15px; left: 15px; right: 15px; width: calc(100% - 30px); height: calc(100% - 30px); } 
-            .flower-garland { width: 260px; height: 85px; } 
-            h1 { font-size: 2.5rem; } h2 { font-size: 1.8rem; } 
+            .scroll-block { padding: 140px 15px !important; } 
+            .exact-frame-container { top: 20px; bottom: 20px; left: 20px; right: 20px; width: calc(100% - 40px); height: calc(100% - 40px); } 
+            .flower-garland { width: 280px; height: 95px; } 
+            h1 { font-size: 2.6rem; } h2 { font-size: 1.9rem; } 
             
-            /* Пропорции рамки фото на мобильном телефоне */
-            .photo-frame { width: 100%; max-width: 280px; height: 360px; margin: 25px auto; border-radius: 140px 140px 0 0; } 
+            /* Фотография на телефонах подгружает готовую картинку с аркой */
+            .photo-frame { width: 100%; max-width: 290px; height: 375px; margin: 30px auto; border-radius: 150px 150px 0 0; background-image: url('couple_mobile.jpg') !important; } 
+            /* Выключаем плавающий код наложения на смартфонах, чтобы не ломать верстку */
+            .photo-frame::after { display: none !important; } 
             
-            /* Идеальная автоматическая посадка узора арки на мобильном экране */
-            .photo-frame::after { 
-                top: -20px; left: -20px; right: -25px;
-                background-size: 117% auto; 
-                background-position: center -42px; 
-                border-radius: 140px 140px 0 0;
-            } 
-            
-            .location-grid { flex-direction: column; gap: 25px; padding: 0 15px 20px 15px; } 
+            .location-grid { flex-direction: column; gap: 30px; padding: 0 15px 20px 15px; } 
             .location-text { margin-top: 0; } 
             .location-photo { width: 100%; max-width: 440px; height: 240px; } 
         }
@@ -100,7 +94,7 @@
         .location-photo { width: 420px; height: 260px; border-radius: 18px; background-size: cover; background-position: center; background-repeat: no-repeat; box-shadow: 0 15px 40px rgba(74,59,50,0.14); transition: transform 0.3s ease; flex-shrink: 0; }
         .location-photo:hover { transform: scale(1.02); }
 
-        .colors-container { display: flex; justify-content: center; flex-wrap: wrap; gap: 24px; margin: 35px 0; position: relative; z-index: 3; }
+        .colors-container { display: center; justify-content: center; flex-wrap: wrap; gap: 24px; margin: 35px 0; position: relative; z-index: 3; }
         .color-card { display: flex; flex-direction: column; align-items: center; gap: 8px; }
         .color-circle { width: 60px; height: 60px; border-radius: 50%; box-shadow: 0 8px 20px rgba(0,0,0,0.1); border: 2px solid #fff; transition: transform 0.3s; }
         .color-circle:hover { transform: scale(1.1); }
@@ -109,7 +103,7 @@
         .timer-grid { display: flex; gap: 15px; margin: 35px 0; position: relative; z-index: 3; }
         .timer-item { background: rgba(255,255,255,0.15); padding: 20px; border-radius: 14px; min-width: 85px; backdrop-filter: blur(5px); box-shadow: 0 6px 20px rgba(0,0,0,0.04); border: 1px solid rgba(255,255,255,0.1); }
         .timer-num { font-size: 2.2rem; font-weight: 600; display: block; line-height: 1.1; }
-        .timer-lbl { font-size: 0.75rem; text-transform: uppercase; opacity: 0.85; letter-spacing: 1px; margin-top: 5px; }
+        .timer-lbl { font-size: 0.75rem; text-transform: uppercase; opacity: 0.85; margin-top: 5px; }
 
         .form-box { background: rgba(255, 255, 255, 0.7); padding: 40px 30px; border-radius: 16px; border: 1px solid rgba(74,59,50,0.12); width: 100%; max-width: 440px; text-align: left; margin-top: 10px; box-shadow: 0 12px 35px rgba(0,0,0,0.04); position: relative; z-index: 3; }
         .row { margin-bottom: 20px; }
