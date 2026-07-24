@@ -13,6 +13,7 @@
         html, body { margin: 0 !important; padding: 0 !important; background-color: var(--bg-cream) !important; font-family: 'Montserrat', sans-serif; color: var(--txt-choco); text-align: center; scroll-behavior: smooth; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
+        /* СТАБИЛЬНЫЙ ВЫСОКИЙ КАРКАС СТРАНИЦ ДЛЯ ПК */
         .scroll-block { width: 100%; padding: 160px 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: hidden; background-color: var(--bg-cream); }
         .bg-beige-block { background-color: var(--bg-cream) !important; color: var(--txt-choco); }
         .block-sage { background: linear-gradient(135deg, #5c6b4e, #435236) !important; color: var(--txt-white) !important; padding: 160px 20px; }
@@ -34,12 +35,12 @@
         }
         @keyframes blink { 0%, 100% { opacity: 0.1; transform: scale(0.8); } 50% { opacity: 0.5; transform: scale(1.3); } }
 
-        /* ГЕРАЛЬДИЧЕСКАЯ РАМКА С ЛИЛИЯМИ */
+        /* ГЕРАЛЬДИЧЕСКАЯ РАМКА ДЛЯ ПК */
         .exact-frame-container { position: absolute; top: 30px; bottom: 30px; left: 30px; right: 30px; pointer-events: none; z-index: 2; width: calc(100% - 60px); height: calc(100% - 60px); color: var(--txt-choco); }
         .block-sage .exact-frame-container { color: rgba(255, 255, 255, 0.35) !important; }
         .exact-frame-container svg { width: 100%; height: 100%; display: block; }
 
-        /* ЗЕРКАЛЬНОЕ ОТРАЖЕНИЕ ФОТО-ЦВЕТОВ */
+        /* ЦВЕТЫ НА ГРАНИЦАХ СТРАНИЦ */
         .flower-garland { position: absolute; width: 100%; max-width: 480px; height: 120px; pointer-events: none; z-index: 4; left: 50%; transform: translateX(-50%); background-size: contain; background-repeat: no-repeat; background-position: center; }
         .top-flowers { top: 15px; background-image: url('flowers_top.png'); }
         .bottom-flowers { bottom: 15px; background-image: url('flowers_bottom.png'); transform: translateX(-50%) scaleY(-1); }
@@ -53,40 +54,14 @@
         .label-title { font-family: 'Montserrat', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 500; opacity: 0.7; margin-bottom: 3px; }
         .label-value { font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 400; letter-spacing: 0.5px; }
         
-        /* КАРКАС ФОТОГРАФИИ ОБЛОЖКИ ДЛЯ ПК */
-        .photo-frame { 
-            width: 100%; max-width: 310px; height: 400px; margin: 25px auto; 
-            border-radius: 160px 160px 0 0; background: url('couple.jpg') center/cover no-repeat; 
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1); position: relative; z-index: 3; 
-        }
+        .photo-frame { width: 100%; max-width: 310px; height: 400px; margin: 25px auto; border-radius: 160px 160px 0 0; background: url('couple.jpg') center/cover no-repeat; box-shadow: 0 15px 35px rgba(0,0,0,0.1); position: relative; z-index: 3; }
         
-        /* НАЛОЖЕНИЕ АРКИ ДЛЯ ВЕРСИИ ПК */
+        /* НАЛОЖЕНИЕ АРКИ ДЛЯ ПК */
         .photo-frame::after {
             content: ""; position: absolute;
             top: -25px; bottom: 0; left: -25px; right: -25px;
-            background-image: url('arch.png'); 
-            background-size: 116% auto; 
-            background-repeat: no-repeat;
-            background-position: center -62px;
-            pointer-events: none; z-index: 5;
-            border-radius: 160px 160px 0 0;
-        }
-
-        /* УМНАЯ МОБИЛЬНАЯ АДАПТАЦИЯ (ИСПРАВЛЕНО ВСЁ СМЕЩЕНИЕ БЛОКОВ) */
-        @media (max-width: 1024px) { 
-            .scroll-block { padding: 140px 15px !important; } 
-            .exact-frame-container { top: 20px; bottom: 20px; left: 20px; right: 20px; width: calc(100% - 40px); height: calc(100% - 40px); } 
-            .flower-garland { width: 280px; height: 95px; } 
-            h1 { font-size: 2.6rem; } h2 { font-size: 1.9rem; } 
-            
-            /* Фотография на телефонах подгружает готовую картинку с аркой */
-            .photo-frame { width: 100%; max-width: 290px; height: 375px; margin: 30px auto; border-radius: 150px 150px 0 0; background-image: url('couple_mobile.jpg') !important; } 
-            /* Выключаем плавающий код наложения на смартфонах, чтобы не ломать верстку */
-            .photo-frame::after { display: none !important; } 
-            
-            .location-grid { flex-direction: column; gap: 30px; padding: 0 15px 20px 15px; } 
-            .location-text { margin-top: 0; } 
-            .location-photo { width: 100%; max-width: 440px; height: 240px; } 
+            background-image: url('arch.png'); background-size: 116% auto; background-repeat: no-repeat; background-position: center -62px;
+            pointer-events: none; z-index: 5; border-radius: 160px 160px 0 0;
         }
 
         .location-grid { display: flex; align-items: center; justify-content: space-between; gap: 50px; width: 100%; max-width: 1450px; margin: 0 auto; padding: 0 50px 50px 50px; position: relative; z-index: 3; }
@@ -94,7 +69,7 @@
         .location-photo { width: 420px; height: 260px; border-radius: 18px; background-size: cover; background-position: center; background-repeat: no-repeat; box-shadow: 0 15px 40px rgba(74,59,50,0.14); transition: transform 0.3s ease; flex-shrink: 0; }
         .location-photo:hover { transform: scale(1.02); }
 
-        .colors-container { display: center; justify-content: center; flex-wrap: wrap; gap: 24px; margin: 35px 0; position: relative; z-index: 3; }
+        .colors-container { display: flex; justify-content: center; flex-wrap: wrap; gap: 24px; margin: 35px 0; position: relative; z-index: 3; }
         .color-card { display: flex; flex-direction: column; align-items: center; gap: 8px; }
         .color-circle { width: 60px; height: 60px; border-radius: 50%; box-shadow: 0 8px 20px rgba(0,0,0,0.1); border: 2px solid #fff; transition: transform 0.3s; }
         .color-circle:hover { transform: scale(1.1); }
@@ -103,13 +78,46 @@
         .timer-grid { display: flex; gap: 15px; margin: 35px 0; position: relative; z-index: 3; }
         .timer-item { background: rgba(255,255,255,0.15); padding: 20px; border-radius: 14px; min-width: 85px; backdrop-filter: blur(5px); box-shadow: 0 6px 20px rgba(0,0,0,0.04); border: 1px solid rgba(255,255,255,0.1); }
         .timer-num { font-size: 2.2rem; font-weight: 600; display: block; line-height: 1.1; }
-        .timer-lbl { font-size: 0.75rem; text-transform: uppercase; opacity: 0.85; margin-top: 5px; }
+        .timer-lbl { font-size: 0.75rem; text-transform: uppercase; opacity: 0.85; letter-spacing: 1px; margin-top: 5px; }
 
         .form-box { background: rgba(255, 255, 255, 0.7); padding: 40px 30px; border-radius: 16px; border: 1px solid rgba(74,59,50,0.12); width: 100%; max-width: 440px; text-align: left; margin-top: 10px; box-shadow: 0 12px 35px rgba(0,0,0,0.04); position: relative; z-index: 3; }
         .row { margin-bottom: 20px; }
         .radios { display: flex; gap: 25px; margin-top: 6px; }
         .radios label { font-weight: 400; cursor: pointer; display: flex; align-items: center; gap: 6px; font-size: 0.95rem; }
         .submit-btn { width: 100%; padding: 14px; background: var(--txt-choco); color: #fff; border: none; border-radius: 6px; font-size: 0.95rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; }
+
+        /* ЖЕСТКИЙ СВЕРХНАДЕЖНЫЙ МОБИЛЬНЫЙ МЕДИА-ЗАПРОС С АВТОРАСТЯЖЕНИЕМ РАМОК */
+        @media (max-width: 1024px) { 
+            /* Динамическое расширение высоты страниц под любой объем текста */
+            .scroll-block { padding: 130px 20px !important; min-height: 100vh !important; height: auto !important; } 
+            
+            /* Рамка больше не сжимает контент, а мягко обволакивает страницу наружными границами */
+            .exact-frame-container { top: 15px; bottom: 15px; left: 15px; right: 15px; width: calc(100% - 30px); height: calc(100% - 30px); } 
+            
+            .flower-garland { width: 250px; height: 80px; } 
+            h1 { font-size: 2.4rem !important; margin-bottom: 5px; } 
+            h2 { font-size: 1.75rem !important; margin-bottom: 15px; } 
+            
+            /* Идеальное масштабирование фото обложки на телефоне */
+            .photo-frame { width: 250px !important; height: 325px !important; margin: 20px auto !important; border-radius: 125px 140px 0 0; background-image: url('couple_mobile.jpg') !important; } 
+            .photo-frame::after { display: none !important; } 
+            
+            /* Предотвращение вылезания длинных абзацев */
+            p { font-size: 0.95rem !important; line-height: 1.7 !important; padding: 0 5px !important; }
+            
+            /* Адаптивная мобильная сетка фотографий «Красной Горы» */
+            .location-grid { flex-direction: column !important; gap: 20px !important; padding: 0 10px !important; margin: 10px auto !important; } 
+            .location-text { margin-top: 0 !important; max-width: 100% !important; } 
+            .location-photo { width: 100% !important; max-width: 320px !important; height: 200px !important; border-radius: 14px !important; } 
+            
+            /* Выравнивание анкеты и дресс-кода на мобильных экранах */
+            .colors-container { gap: 15px !important; margin: 20px 0 !important; }
+            .color-circle { width: 50px !important; height: 50px !important; }
+            .form-box { padding: 30px 20px !important; max-width: 100% !important; }
+            .timer-grid { gap: 10px !important; margin: 25px 0 !important; }
+            .timer-item { padding: 15px 10px !important; min-width: 70px !important; }
+            .timer-num { font-size: 1.8rem !important; }
+        }
     </style>
 </head>
 <body>
