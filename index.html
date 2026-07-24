@@ -13,18 +13,12 @@
         html, body { margin: 0 !important; padding: 0 !important; background-color: var(--bg-cream) !important; font-family: 'Montserrat', sans-serif; color: var(--txt-choco); text-align: center; scroll-behavior: smooth; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
-        /* ЧЕТКОЕ РАЗДЕЛЕНИЕ ФОНОВ И ЦВЕТА ТЕКСТА ДЛЯ КАЖДОГО БЛОКА */
         .scroll-block { width: 100%; padding: 160px 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: hidden; }
-        
-        /* Блоки с кремово-бежевым фоном */
         .bg-beige-block { background-color: var(--bg-cream) !important; color: var(--txt-choco) !important; }
         .bg-beige-block h1, .bg-beige-block h2, .bg-beige-block p { color: var(--txt-choco) !important; }
-        
-        /* Блоки с зелёным градиентом (Приглашение, Таймер, Анкета) */
         .block-sage { background: linear-gradient(135deg, #5c6b4e, #435236) !important; color: var(--txt-white) !important; padding: 160px 20px; }
         .block-sage h2, .block-sage p { color: var(--txt-white) !important; }
 
-        /* ЭФФЕКТЫ СВЕТЛЯЧКОВ И ЛЕПЕСТКОВ */
         .bg-magic { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; overflow: hidden; }
         .petal { position: absolute; background: rgba(255, 255, 255, 0.45); border-radius: 150px 10px 150px 120px; animation: floatPetal 12s linear infinite; }
         .petal-1 { width: 15px; height: 12px; left: 10%; animation-duration: 14s; animation-delay: 0s; }
@@ -41,17 +35,15 @@
         }
         @keyframes blink { 0%, 100% { opacity: 0.1; transform: scale(0.8); } 50% { opacity: 0.5; transform: scale(1.3); } }
 
-        /* АДАПТИВНАЯ ГЕРАЛЬДИЧЕСКАЯ РАМКА С ЛИЛИЯМИ */
         .exact-frame-container { position: absolute; top: 30px; bottom: 30px; left: 30px; right: 30px; pointer-events: none; z-index: 2; width: calc(100% - 60px); height: calc(100% - 60px); color: var(--txt-choco); }
         .block-sage .exact-frame-container { color: rgba(255, 255, 255, 0.35) !important; }
         .exact-frame-container svg { width: 100%; height: 100%; display: block; }
 
-        /* ВОССТАНОВЛЕННЫЕ ОРИГИНАЛЬНЫЕ АКВАРЕЛЬНЫЕ ЦВЕТЫ С ДЕТАЛИЗАЦИЕЙ */
+        /* ИДЕАЛЬНОЕ НАЛОЖЕНИЕ ЦВЕТОВ СЕРЕДИНОЙ ПРЯМО НА ЛИНИЮ РАМКИ (30px) */
         .flower-garland { position: absolute; width: 100%; max-width: 480px; height: 120px; pointer-events: none; z-index: 4; left: 50%; transform: translateX(-50%); background-size: contain; background-repeat: no-repeat; background-position: center; }
-        .top-flowers { top: 15px; background-image: url('flowers_top.png'); }
-        .bottom-flowers { bottom: 15px; background-image: url('flowers_bottom.png'); transform: translateX(-50%) scaleY(-1); }
+        .top-flowers { top: -30px; } /* Сдвинуты на верхнюю линию */
+        .bottom-flowers { bottom: -30px; transform: translateX(-50%) scaleY(-1); } /* Сдвинуты на нижнюю линию */
 
-        /* ВИНИЕТКИ: ШОКОЛАДНЫЕ ДЛЯ БЕЖЕВОГО И БЕЛЫЕ ДЛЯ ЗЕЛЕНОГО ФОНА */
         .vignette { width: 120px; height: 20px; margin: 0 auto 15px auto; pointer-events: none; opacity: 0.7; position: relative; z-index: 3; color: var(--txt-choco); }
         .block-sage .vignette { color: var(--txt-white) !important; }
 
@@ -206,7 +198,7 @@
         
         <div class="flower-garland bottom-flowers"></div>
     </div>
-            <!-- БЛОК 5: Дресс-код -->
+                <!-- БЛОК 5: Дресс-код -->
     <div class="scroll-block bg-beige-block" style="border-top: 1px solid rgba(74,59,50,0.06);">
         <div class="exact-frame-container"><svg><use href="#new-exact-pattern"/></svg></div>
         <div class="flower-garland top-flowers"></div>
@@ -222,7 +214,7 @@
         <div class="flower-garland bottom-flowers"></div>
     </div>
 
-    <!-- БЛОК 6: RSVP Анкета (НЕ МЕНЯЛСЯ, ОСТАЛСЯ ЗЕЛЕНЫМ) -->
+    <!-- БЛОК 6: RSVP Анкета -->
     <div class="scroll-block block-sage" id="rsvp-section" style="border-top: 1px solid rgba(74,59,50,0.06); padding-bottom: 180px;">
         <div class="exact-frame-container"><svg><use href="#new-exact-pattern"/></svg></div>
         <div class="flower-garland top-flowers"></div>
@@ -249,17 +241,17 @@
         <div class="flower-garland bottom-flowers"></div>
     </div>
 
-    <!-- НОВЫЙ БЛОК 7: Финальная страница (КРЕМОВО-БЕЖЕВАЯ С ГЕРБОМ) -->
+    <!-- БЛОК 7: Финальная страница (ИСПРАВЛЕННОЕ ПОЛОЖЕНИЕ СТРОК И УВЕЛИЧЕННЫЙ ГЕРБ) -->
     <div class="scroll-block bg-beige-block" style="border-top: 1px solid rgba(74,59,50,0.06); padding-bottom: 160px;">
         <div class="exact-frame-container"><svg><use href="#new-exact-pattern"/></svg></div>
         <div class="flower-garland top-flowers"></div>
         
-        <!-- Заголовки выполнены вашим любимым каллиграфическим шрифтом -->
-        <h2 style="margin-top: 20px; font-size: 2.5rem; margin-bottom: 10px;">Будем рады вас видеть!</h2>
-        <h2 style="font-size: 2.1rem; margin-bottom: 35px;">С любовью,</h2>
+        <!-- Строка поднята на уровень выше -->
+        <h2 style="margin-top: -10px; font-size: 2.5rem; margin-bottom: 10px;">Будем рады вас видеть!</h2>
+        <h2 style="font-size: 2.1rem; margin-bottom: 30px;">С любовью,</h2>
         
-        <!-- Круглый блок для фотографии герба строго по центру -->
-        <div style="margin: 0 auto; width: 150px; height: 150px; border-radius: 50%; background: url('crest.png') center/contain no-repeat; position: relative; z-index: 3; filter: drop-shadow(0 10px 25px rgba(74,59,50,0.15));"></div>
+        <!-- Масштаб герба увеличен до 190px для роскошного акцента -->
+        <div style="margin: 0 auto; width: 190px; height: 190px; border-radius: 50%; background: url('crest.png') center/contain no-repeat; position: relative; z-index: 3; filter: drop-shadow(0 12px 30px rgba(74,59,50,0.18));"></div>
         
         <div class="flower-garland bottom-flowers"></div>
     </div>
@@ -282,5 +274,6 @@
     </script>
 </body>
 </html>
+
 
 
