@@ -13,7 +13,8 @@
         html, body { margin: 0 !important; padding: 0 !important; background-color: var(--bg-cream) !important; font-family: 'Montserrat', sans-serif; color: var(--txt-choco); text-align: center; scroll-behavior: smooth; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
-        .scroll-block { width: 100%; padding: 160px 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: hidden; }
+        /* ИСПРАВЛЕНО: overflow изменен на visible, чтобы рамки не обрезали бутоны цветов */
+        .scroll-block { width: 100%; padding: 160px 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: visible !important; }
         .bg-beige-block { background-color: var(--bg-cream) !important; color: var(--txt-choco) !important; }
         .bg-beige-block h1, .bg-beige-block h2, .bg-beige-block p { color: var(--txt-choco) !important; }
         .block-sage { background: linear-gradient(135deg, #5c6b4e, #435236) !important; color: var(--txt-white) !important; padding: 160px 20px; }
@@ -39,10 +40,10 @@
         .block-sage .exact-frame-container { color: rgba(255, 255, 255, 0.35) !important; }
         .exact-frame-container svg { width: 100%; height: 100%; display: block; }
 
-        /* ИДЕАЛЬНОЕ НАЛОЖЕНИЕ ЦВЕТОВ СЕРЕДИНОЙ ПРЯМО НА ЛИНИЮ РАМКИ (30px) */
+        /* ИСПРАВЛЕННОЕ ВЫВЕРЕННОЕ НАЛОЖЕНИЕ: Цветы ложатся серединой ровно на линию 30px */
         .flower-garland { position: absolute; width: 100%; max-width: 480px; height: 120px; pointer-events: none; z-index: 4; left: 50%; transform: translateX(-50%); background-size: contain; background-repeat: no-repeat; background-position: center; }
-        .top-flowers { top: -30px; } /* Сдвинуты на верхнюю линию */
-        .bottom-flowers { bottom: -30px; transform: translateX(-50%) scaleY(-1); } /* Сдвинуты на нижнюю линию */
+        .top-flowers { top: -25px !important; } 
+        .bottom-flowers { bottom: -25px !important; transform: translateX(-50%) scaleY(-1) !important; }
 
         .vignette { width: 120px; height: 20px; margin: 0 auto 15px auto; pointer-events: none; opacity: 0.7; position: relative; z-index: 3; color: var(--txt-choco); }
         .block-sage .vignette { color: var(--txt-white) !important; }
@@ -70,7 +71,7 @@
         .timer-grid { display: flex; gap: 15px; margin: 35px 0; position: relative; z-index: 3; }
         .timer-item { background: rgba(255,255,255,0.15); padding: 20px; border-radius: 14px; min-width: 85px; backdrop-filter: blur(5px); box-shadow: 0 6px 20px rgba(0,0,0,0.04); border: 1px solid rgba(255,255,255,0.1); }
         .timer-num { font-size: 2.2rem; font-weight: 600; display: block; line-height: 1.1; }
-        .timer-lbl { font-size: 0.75rem; text-transform: uppercase; opacity: 0.85; letter-spacing: 1px; margin-top: 5px; }
+        .timer-lbl { font-size: 0.75rem; text-transform: uppercase; opacity: 0.85; margin-top: 5px; }
 
         .form-box { background: rgba(255, 255, 255, 0.7); padding: 40px 30px; border-radius: 16px; border: 1px solid rgba(74,59,50,0.12); width: 100%; max-width: 440px; text-align: left; margin-top: 10px; box-shadow: 0 12px 35px rgba(0,0,0,0.04); position: relative; z-index: 3; }
         .row { margin-bottom: 20px; }
