@@ -7,7 +7,10 @@
     <link href="https://googleapis.com" rel="stylesheet">
     <style>
         :root {
-            --bg-sage: #738466; --bg-cream: #ebdccb; --txt-choco: #4a3b32;
+            --bg-sage: #738466; 
+            /* ОБНОВЛЕННЫЙ БЛАГОРОДНЫЙ БЕЖЕВО-ЗОЛОТОЙ ОТТЕНОК */
+            --bg-cream: #f3e5d8; 
+            --txt-choco: #4a3b32;
             --txt-white: #ffffff; --accent-gold: #b59f7a;
         }
         html, body { margin: 0 !important; padding: 0 !important; background-color: var(--bg-cream) !important; font-family: 'Montserrat', sans-serif; color: var(--txt-choco); text-align: center; scroll-behavior: smooth; }
@@ -15,9 +18,16 @@
         
         .scroll-block { width: 100%; padding: 160px 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: visible !important; }
         .bg-beige-block { background-color: var(--bg-cream) !important; color: var(--txt-choco) !important; }
-        .bg-beige-block h1, .bg-beige-block h2, .bg-beige-block p { color: var(--txt-choco) !important; }
+        
+        /* ВЫРАВНИВАНИЕ ЦВЕТА И КУРСИВА ДЛЯ БЕЖЕВО-ЗОЛОТЫХ СТРАНИЦ */
+        .bg-beige-block h1, .bg-beige-block h2 { color: var(--txt-choco) !important; }
+        .bg-beige-block p, .bg-beige-block .label-value, .bg-beige-block .label-title { color: var(--txt-choco) !important; font-style: italic !important; }
+        
         .block-sage { background: linear-gradient(135deg, #5c6b4e, #435236) !important; color: var(--txt-white) !important; padding: 160px 20px; }
-        .block-sage h2, .block-sage p { color: var(--txt-white) !important; }
+        
+        /* ВЫРАВНИВАНИЕ ЦВЕТА И КУРСИВА ДЛЯ ОЛИВКОВО-ЗЕЛЕНЫХ СТРАНИЦ */
+        .block-sage h2 { color: var(--txt-white) !important; }
+        .block-sage p, .block-sage .timer-lbl { color: var(--txt-white) !important; font-style: italic !important; }
 
         .bg-magic { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; overflow: hidden; }
         .petal { position: absolute; background: rgba(255, 255, 255, 0.45); border-radius: 150px 10px 150px 120px; animation: floatPetal 12s linear infinite; }
@@ -53,7 +63,13 @@
         .label-value { font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 400; letter-spacing: 0.5px; }
         
         .photo-frame { width: 100%; max-width: 310px; height: 400px; margin: 25px auto; border-radius: 160px 160px 0 0; background: url('couple.jpg') center/cover no-repeat; box-shadow: 0 15px 35px rgba(0,0,0,0.1); position: relative; z-index: 3; }
-        .photo-frame::after { content: ""; position: absolute; top: -25px; bottom: 0; left: -25px; right: -25px; background-image: url('arch.png'); background-size: 116% auto; background-repeat: no-repeat; background-position: center -62px; pointer-events: none; z-index: 5; border-radius: 160px 160px 0 0; }
+        
+        /* ВОССТАНОВЛЕННАЯ СТАБИЛЬНАЯ АРКА НАД ПОРТРЕТОМ */
+        .photo-frame::after { 
+            content: ""; position: absolute; top: -25px; bottom: 0; left: -25px; right: -25px; 
+            background-image: url('arch.png'); background-size: 116% auto; background-repeat: no-repeat; 
+            background-position: center -62px; pointer-events: none; z-index: 5; border-radius: 160px 160px 0 0; 
+        }
 
         .location-grid { display: flex; align-items: center; justify-content: space-between; gap: 50px; width: 100%; max-width: 1450px; margin: 0 auto; padding: 0 50px 50px 50px; position: relative; z-index: 3; }
         .location-text { flex: 1; max-width: 380px; padding: 0 10px; margin-top: -40px; }
@@ -69,22 +85,17 @@
         .timer-grid { display: flex; gap: 15px; margin: 35px 0; position: relative; z-index: 3; }
         .timer-item { background: rgba(255,255,255,0.15); padding: 20px; border-radius: 14px; min-width: 85px; backdrop-filter: blur(5px); box-shadow: 0 6px 20px rgba(0,0,0,0.04); border: 1px solid rgba(255,255,255,0.1); }
         .timer-num { font-size: 2.2rem; font-weight: 600; display: block; line-height: 1.1; }
-        .timer-lbl { font-size: 0.75rem; text-transform: uppercase; opacity: 0.85; letter-spacing: 1px; margin-top: 5px; }
 
         .form-box { background: rgba(255, 255, 255, 0.7); padding: 40px 30px; border-radius: 16px; border: 1px solid rgba(74,59,50,0.12); width: 100%; max-width: 440px; text-align: left; margin-top: 10px; box-shadow: 0 12px 35px rgba(0,0,0,0.04); position: relative; z-index: 3; }
         .row { margin-bottom: 20px; }
         .radios { display: flex; gap: 25px; margin-top: 6px; }
         .radios label { font-weight: 400; cursor: pointer; display: flex; align-items: center; gap: 6px; font-size: 0.95rem; }
         .submit-btn { width: 100%; padding: 14px; background: var(--txt-choco); color: #fff; border: none; border-radius: 6px; font-size: 0.95rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; }
-        .zoom-block { animation: blockZoom 1.4s cubic-bezier(0.25, 1, 0.5, 1) forwards; }
-        @keyframes blockZoom { from { transform: scale(1.06); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-        .fade-up { opacity: 0; transform: translateY(30px); animation: textFadeUp 1s cubic-bezier(0.25, 1, 0.5, 1) forwards; }
-        .del-1 { animation-delay: 0.3s; } .del-2 { animation-delay: 0.6s; } .del-3 { animation-delay: 0.9s; } .del-4 { animation-delay: 1.2s; }
-        @keyframes textFadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
         @media (max-width: 1024px) { 
             .scroll-block { padding: 120px 20px 140px 20px !important; height: auto !important; min-height: 100vh !important; } 
             .exact-frame-container { display: none !important; } 
             .scroll-block::before { content: ""; position: absolute; top: 15px; bottom: 15px; left: 15px; right: 15px; border: 2px solid var(--txt-choco); border-radius: 14px; opacity: 0.9; pointer-events: none; z-index: 2; }
+            .scroll-block::before { border-color: var(--txt-choco) !important; }
             .block-sage::before { border-color: rgba(255, 255, 255, 0.35) !important; }
             .flower-garland { width: 250px; height: 80px; } 
             .top-flowers { top: -42px !important; background-image: url('flowers_top.png') !important; } 
@@ -93,16 +104,21 @@
             h2 { font-size: 1.7rem !important; margin-bottom: 15px; } 
             .photo-frame { width: 240px !important; height: 310px !important; margin: 20px auto !important; border-radius: 120px 120px 0 0; background-image: url('couple.jpg') !important; } 
             .photo-frame::after { display: none !important; } 
-            p { font-size: 0.95rem !important; line-height: 1.7 !important; }
+            
+            /* ЕДИНЫЙ МОБИЛЬНЫЙ КУРСИВ */
+            p, .label-value, .label-title { font-size: 0.95rem !important; line-height: 1.7 !important; font-style: italic !important; }
+            
             .location-grid { flex-direction: column !important; gap: 20px !important; padding: 0 !important; margin: 10px auto !important; } 
             .location-text { margin-top: 0 !important; max-width: 100% !important; } 
             .location-photo { width: 100% !important; max-width: 300px !important; height: 190px !important; border-radius: 12px !important; } 
             .colors-container { gap: 15px !important; margin: 20px 0 !important; }
             .color-circle { width: 50px !important; height: 50px !important; }
+            .color-name { font-style: normal !important; }
             .form-box { padding: 30px 20px !important; width: 100% !important; max-width: 340px !important; background: #fff !important; margin: 0 auto !important; box-shadow: 0 10px 30px rgba(0,0,0,0.05) !important; }
+            .form-box label { font-style: normal !important; }
             .timer-grid { gap: 10px !important; margin: 25px 0 !important; }
             .timer-item { padding: 15px 8px !important; min-width: 70px !important; }
-            .timer-num { font-size: 1.8rem !important; }
+            .timer-num { font-size: 1.8rem !important; font-style: normal !important; }
         }
     </style>
 </head>
@@ -204,6 +220,7 @@
         </div>
         <div class="flower-garland bottom-flowers"></div>
     </div>
+        <!-- БЛОК 5: Дресс-код (ОСТАЛСЯ ЗОЛОТИСТО-БЕЖЕВЫМ) -->
     <div class="scroll-block bg-beige-block" style="border-top: 1px solid rgba(74,59,50,0.06); padding-top: 100px; padding-bottom: 120px;">
         <div class="exact-frame-container"><svg><use href="#new-exact-pattern"/></svg></div>
         <div class="flower-garland top-flowers"></div>
@@ -227,7 +244,8 @@
         <div class="flower-garland bottom-flowers"></div>
     </div>
 
-    <div class="scroll-block block-sage" id="rsvp-section" style="border-top: 1px solid rgba(74,59,50,0.06); padding-bottom: 180px;">
+    <!-- БЛОК 6: RSVP Анкета (ТЕПЕРЬ НА ЗОЛОТИСТО-БЕЖЕВОМ ФОНЕ С ШОКОЛАДНЫМ ТЕКСТОМ) -->
+    <div class="scroll-block bg-beige-block" id="rsvp-section" style="border-top: 1px solid rgba(74,59,50,0.06); padding-bottom: 180px;">
         <div class="exact-frame-container"><svg><use href="#new-exact-pattern"/></svg></div>
         <div class="flower-garland top-flowers"></div>
         <h2>Подтверждение присутствия</h2>
@@ -253,6 +271,7 @@
         <div class="flower-garland bottom-flowers"></div>
     </div>
 
+    <!-- БЛОК 7: Финальная страница -->
     <div class="scroll-block bg-beige-block" style="border-top: 1px solid rgba(74,59,50,0.06); padding-bottom: 160px;">
         <div class="exact-frame-container"><svg><use href="#new-exact-pattern"/></svg></div>
         <div class="flower-garland top-flowers"></div>
@@ -283,3 +302,4 @@
     </script>
 </body>
 </html>
+
