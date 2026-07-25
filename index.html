@@ -77,23 +77,43 @@
         .radios { display: flex; gap: 25px; margin-top: 6px; }
         .radios label { font-weight: 400; cursor: pointer; display: flex; align-items: center; gap: 6px; font-size: 0.95rem; }
         .submit-btn { width: 100%; padding: 14px; background: var(--txt-choco); color: #fff; border: none; border-radius: 6px; font-size: 0.95rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; }
-        @media (max-width: 1024px) { 
+                @media (max-width: 1024px) { 
+            /* Блоки автоматически растягиваются под высоту контента */
             .scroll-block { padding: 120px 20px 140px 20px !important; height: auto !important; min-height: 100vh !important; } 
+            
+            /* Полное отключение старой сжимающей рамки для спасения анкеты */
             .exact-frame-container { display: none !important; } 
-            .scroll-block::before { content: ""; position: absolute; top: 15px; bottom: 15px; left: 15px; right: 15px; border: 2px solid var(--txt-choco); border-radius: 14px; opacity: 0.9; pointer-events: none; z-index: 2; }
+            
+            /* Гибкая рамка следует за текстом на смартфонах */
+            .scroll-block::before {
+                content: ""; position: absolute; top: 15px; bottom: 15px; left: 15px; right: 15px;
+                border: 2px solid var(--txt-choco); border-radius: 14px; opacity: 0.9; pointer-events: none; z-index: 2;
+            }
             .block-sage::before { border-color: rgba(255, 255, 255, 0.35) !important; }
+            
+            /* МОБИЛЬНЫЕ ОТСТУПЫ ЦВЕТОВ: Ложатся центрами ровно на линию 15px */
             .flower-garland { width: 250px; height: 80px; } 
+            .top-flowers { top: -25px !important; background-image: url('flowers_top.png') !important; } 
+            .bottom-flowers { bottom: -25px !important; background-image: url('flowers_bottom.png') !important; } 
+            
             h1 { font-size: 2.3rem !important; margin-bottom: 5px; } 
             h2 { font-size: 1.7rem !important; margin-bottom: 15px; } 
-            .photo-frame { width: 240px !important; height: 310px !important; margin: 20px auto !important; border-radius: 120px 120px 0 0; background-image: url('couple_mobile.jpg') !important; } 
+            
+            /* Оптимизированный каркас главного фото */
+            .photo-frame { width: 240px !important; height: 310px !important; margin: 20px auto !important; border-radius: 120px 120px 0 0; background-image: url('couple.jpg') !important; } 
             .photo-frame::after { display: none !important; } 
+            
             p { font-size: 0.95rem !important; line-height: 1.7 !important; }
+            
             .location-grid { flex-direction: column !important; gap: 20px !important; padding: 0 !important; margin: 10px auto !important; } 
             .location-text { margin-top: 0 !important; max-width: 100% !important; } 
             .location-photo { width: 100% !important; max-width: 300px !important; height: 190px !important; border-radius: 12px !important; } 
+            
             .colors-container { gap: 15px !important; margin: 20px 0 !important; }
             .color-circle { width: 50px !important; height: 50px !important; }
+            
             .form-box { padding: 30px 20px !important; width: 100% !important; max-width: 340px !important; background: #fff !important; margin: 0 auto !important; box-shadow: 0 10px 30px rgba(0,0,0,0.05) !important; }
+            
             .timer-grid { gap: 10px !important; margin: 25px 0 !important; }
             .timer-item { padding: 15px 8px !important; min-width: 70px !important; }
             .timer-num { font-size: 1.8rem !important; }
