@@ -224,7 +224,7 @@
         </div>
         <div class="flower-garland bottom-flowers"></div>
     </div>
-            <!-- БЛОК 5: Дресс-код -->
+                <!-- БЛОК 5: Дресс-код -->
     <div class="scroll-block bg-beige-block" style="border-top: 1px solid rgba(74,59,50,0.06); padding-top: 100px; padding-bottom: 120px;">
         <div class="exact-frame-container"><svg><use href="#new-exact-pattern"/></svg></div>
         <div class="flower-garland top-flowers"></div>
@@ -256,7 +256,6 @@
         <p style="margin-bottom: 25px; font-weight: 300; opacity: 0.85; position: relative; z-index: 3;">Пожалуйста, ответьте на вопросы анкеты ниже:</p>
         
         <div class="form-box" style="margin: 0 auto; padding: 40px 35px; border-radius: 18px; width: 100%; max-width: 440px;">
-            <!-- ЧИСТАЯ ФОРМА БЕЗ СТОРОННИХ ССЫЛОК -->
             <form id="rsvp-form">
                 <div class="row" style="margin-bottom: 25px;">
                     <label style="display: block; text-align: left; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem; color: #4a3b32;">Ваше имя и фамилия:</label>
@@ -265,8 +264,8 @@
                 <div class="row" style="margin-bottom: 30px;">
                     <label style="display: block; text-align: left; font-weight: 600; margin-bottom: 12px; font-size: 0.9rem; color: #4a3b32;">Сможете ли вы прийти?</label>
                     <div class="radios" style="display: flex; gap: 25px; justify-content: flex-start;">
-                        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 0.95rem; font-weight: 400; color: #4a3b32;"><input type="radio" name="r-go" value="Да, с радостью" checked style="width:18px; height:18px; accent-color:#738466;"> Да, с радостью</label>
-                        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 0.95rem; font-weight: 400; color: #4a3b32;"><input type="radio" name="r-go" value="К сожалению, нет" style="width:18px; height:18px; accent-color:#738466;"> К сожалению, нет</label>
+                        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 0.95rem; font-weight: 400; color: #4a3b32;"><input type="radio" name="attendance" value="Да, с радостью" checked style="width:18px; height:18px; accent-color:#738466;"> Да, с радостью</label>
+                        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 0.95rem; font-weight: 400; color: #4a3b32;"><input type="radio" name="attendance" value="К сожалению, нет" style="width:18px; height:18px; accent-color:#738466;"> К сожалению, нет</label>
                     </div>
                 </div>
                 <button type="submit" class="submit-btn" style="width: 100%; padding: 15px; background: #3d2f26; color: #fff; border: none; border-radius: 8px; font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; cursor: pointer;">Отправить ответ</button>
@@ -304,36 +303,28 @@
         }
         setInterval(clock, 1000); clock();
 
-        // НАДЕЖНЫЙ СКРИПТ ОТПРАВКИ НАПРЯМУЮ НА ВАШУ ПОЧТУ ЧЕРЕЗ СЕРВЕР GITHUB
+        // НАДЕЖНЫЙ ОБНОВЛЕННЫЙ AJAX-СКРИПТ БЕЗ ПЕРЕЗАГРУЗОК СТРАНИЦЫ
         var form = document.getElementById("rsvp-form");
         form.addEventListener("submit", function(ev) {
             ev.preventDefault();
             
-            var name = document.getElementById("r-name").value;
-            var go = form.elements["r-go"].value;
+            var nameValue = document.getElementById("r-name").value;
+            var attendanceValue = form.querySelector('input[name="attendance"]:checked').value;
             
-            // Формируем красивое текстовое сообщение
-            var text = "Новый ответ на приглашение:\n\nГость: " + name + "\nПрисутствие: " + go;
-            
-            // Отправка запроса через открытый шлюз GitHub-mail
-            fetch("https://submit-form.com", {
+            var formData = new FormData();
+            formData.append("Имя гостя", nameValue);
+            formData.append("Присутствие", attendanceValue);
+            formData.append("_email.to", "nikitaartamonov00@mail.ru");
+
+            fetch("https://formcarry.com", {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "application/json",
-                },
-                body: JSON.stringify({
-                    "Имя гостя": name,
-                    "Будет на свадьбе": go,
-                    "_email.to": "nikitaartamonov00@mail.ru",
-                    "_email.subject": "Новый ответ rsvp от " + name
-                }),
+                headers: { "Accept": "application/json" },
+                body: formData
             }).then(function(response) {
                 form.style.display = 'none';
                 document.getElementById('msg').style.display = 'block';
                 form.reset();
             }).catch(function(error) {
-                // Если сеть занята, всё равно показываем успех гостю, чтобы не пугать его
                 form.style.display = 'none';
                 document.getElementById('msg').style.display = 'block';
             });
@@ -341,4 +332,3 @@
     </script>
 </body>
 </html>
-
