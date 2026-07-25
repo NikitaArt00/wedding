@@ -39,10 +39,9 @@
         .block-sage .exact-frame-container { color: rgba(255, 255, 255, 0.35) !important; }
         .exact-frame-container svg { width: 100%; height: 100%; display: block; }
 
-        /* ИСПРАВЛЕННЫЙ ОТСТУП ДЛЯ ПК: Развели цветы к внешним краям рамок */
         .flower-garland { position: absolute; width: 100%; max-width: 480px; height: 120px; pointer-events: none; z-index: 4; left: 50%; transform: translateX(-50%); background-size: contain; background-repeat: no-repeat; background-position: center; }
-        .top-flowers { top: -42px !important; background-image: url('flowers_top.png') !important; } 
-        .bottom-flowers { bottom: -42px !important; background-image: url('flowers_bottom.png') !important; }
+        .top-flowers { top: -14px !important; background-image: url('flowers_top.png') !important; } 
+        .bottom-flowers { bottom: -14px !important; background-image: url('flowers_bottom.png') !important; }
 
         .vignette { width: 120px; height: 20px; margin: 0 auto 15px auto; pointer-events: none; opacity: 0.7; position: relative; z-index: 3; color: var(--txt-choco); }
         .block-sage .vignette { color: var(--txt-white) !important; }
@@ -70,50 +69,37 @@
         .timer-grid { display: flex; gap: 15px; margin: 35px 0; position: relative; z-index: 3; }
         .timer-item { background: rgba(255,255,255,0.15); padding: 20px; border-radius: 14px; min-width: 85px; backdrop-filter: blur(5px); box-shadow: 0 6px 20px rgba(0,0,0,0.04); border: 1px solid rgba(255,255,255,0.1); }
         .timer-num { font-size: 2.2rem; font-weight: 600; display: block; line-height: 1.1; }
-        .timer-lbl { font-size: 0.75rem; text-transform: uppercase; opacity: 0.85; margin-top: 5px; }
+        .timer-lbl { font-size: 0.75rem; text-transform: uppercase; opacity: 0.85; letter-spacing: 1px; margin-top: 5px; }
 
         .form-box { background: rgba(255, 255, 255, 0.7); padding: 40px 30px; border-radius: 16px; border: 1px solid rgba(74,59,50,0.12); width: 100%; max-width: 440px; text-align: left; margin-top: 10px; box-shadow: 0 12px 35px rgba(0,0,0,0.04); position: relative; z-index: 3; }
         .row { margin-bottom: 20px; }
         .radios { display: flex; gap: 25px; margin-top: 6px; }
         .radios label { font-weight: 400; cursor: pointer; display: flex; align-items: center; gap: 6px; font-size: 0.95rem; }
         .submit-btn { width: 100%; padding: 14px; background: var(--txt-choco); color: #fff; border: none; border-radius: 6px; font-size: 0.95rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; }
-                @media (max-width: 1024px) { 
-            /* Блоки автоматически растягиваются под высоту контента */
+        .zoom-block { animation: blockZoom 1.4s cubic-bezier(0.25, 1, 0.5, 1) forwards; }
+        @keyframes blockZoom { from { transform: scale(1.06); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        .fade-up { opacity: 0; transform: translateY(30px); animation: textFadeUp 1s cubic-bezier(0.25, 1, 0.5, 1) forwards; }
+        .del-1 { animation-delay: 0.3s; } .del-2 { animation-delay: 0.6s; } .del-3 { animation-delay: 0.9s; } .del-4 { animation-delay: 1.2s; }
+        @keyframes textFadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @media (max-width: 1024px) { 
             .scroll-block { padding: 120px 20px 140px 20px !important; height: auto !important; min-height: 100vh !important; } 
-            
-            /* Полное exclusion старой сжимающей рамки для спасения анкеты */
             .exact-frame-container { display: none !important; } 
-            
-            /* Гибкая рамка следует за текстом на смартфонах */
-            .scroll-block::before {
-                content: ""; position: absolute; top: 15px; bottom: 15px; left: 15px; right: 15px;
-                border: 2px solid var(--txt-choco); border-radius: 14px; opacity: 0.9; pointer-events: none; z-index: 2;
-            }
+            .scroll-block::before { content: ""; position: absolute; top: 15px; bottom: 15px; left: 15px; right: 15px; border: 2px solid var(--txt-choco); border-radius: 14px; opacity: 0.9; pointer-events: none; z-index: 2; }
             .block-sage::before { border-color: rgba(255, 255, 255, 0.35) !important; }
-            
-            /* КАРДИНАЛЬНОЕ УВЕЛИЧЕНИЕ ОТСТУПОВ: Цветы разведены к внешним краям рамок */
             .flower-garland { width: 250px; height: 80px; } 
             .top-flowers { top: -42px !important; background-image: url('flowers_top.png') !important; } 
             .bottom-flowers { bottom: -42px !important; background-image: url('flowers_bottom.png') !important; } 
-            
             h1 { font-size: 2.3rem !important; margin-bottom: 5px; } 
             h2 { font-size: 1.7rem !important; margin-bottom: 15px; } 
-            
-            /* Оптимизированный каркас главного фото */
             .photo-frame { width: 240px !important; height: 310px !important; margin: 20px auto !important; border-radius: 120px 120px 0 0; background-image: url('couple.jpg') !important; } 
             .photo-frame::after { display: none !important; } 
-            
             p { font-size: 0.95rem !important; line-height: 1.7 !important; }
-            
             .location-grid { flex-direction: column !important; gap: 20px !important; padding: 0 !important; margin: 10px auto !important; } 
             .location-text { margin-top: 0 !important; max-width: 100% !important; } 
             .location-photo { width: 100% !important; max-width: 300px !important; height: 190px !important; border-radius: 12px !important; } 
-            
             .colors-container { gap: 15px !important; margin: 20px 0 !important; }
             .color-circle { width: 50px !important; height: 50px !important; }
-            
             .form-box { padding: 30px 20px !important; width: 100% !important; max-width: 340px !important; background: #fff !important; margin: 0 auto !important; box-shadow: 0 10px 30px rgba(0,0,0,0.05) !important; }
-            
             .timer-grid { gap: 10px !important; margin: 25px 0 !important; }
             .timer-item { padding: 15px 8px !important; min-width: 70px !important; }
             .timer-num { font-size: 1.8rem !important; }
@@ -122,7 +108,6 @@
 </head>
 <body>
 
-    <!-- ИСПРАВЛЕННЫЙ БЛОК ЛЕПЕСТКОВ СВЕТЛЯЧКОВ (ЛИШНИЕ СИМВОЛЫ УДАЛЕНЫ) -->
     <div class="bg-magic">
         <div class="petal petal-1"></div><div class="petal petal-2"></div><div class="petal petal-3"></div>
         <div class="sparkle sp-1"></div><div class="sparkle sp-2"></div>
@@ -148,7 +133,6 @@
         <g id="vignette-pattern"><path d="M10,10 C30,0 40,20 60,10 C80,0 90,20 110,10 M35,10 C50,15 70,5 85,10" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="60" cy="10" r="3" fill="currentColor"/></g>
     </svg>
 
-    <!-- БЛОК 1: Обложка -->
     <div class="scroll-block bg-beige-block zoom-block">
         <div class="exact-frame-container"><svg><use href="#new-exact-pattern"/></svg></div>
         <div class="flower-garland top-flowers"></div>
@@ -157,32 +141,39 @@
         <div class="photo-frame fade-up del-2"></div>
         
         <div class="fade-up del-3" style="margin-top: 15px;">
-            <div class="label-title">Дата проведения:</div>
+            <div class="label-title">День рождения семьи:</div>
             <div class="label-value">28.08.2026 г.</div>
         </div>
         
         <div class="fade-up del-4" style="margin-top: 20px;">
-            <div class="label-title">Место проведения:</div>
+            <div class="label-title">Дата торжества:</div>
             <div class="label-value" style="font-weight: 300;">п. Татарский Саракташ, б/о "Красная Гора"</div>
         </div>
         
         <div class="flower-garland bottom-flowers"></div>
     </div>
-        <!-- БЛОК 2: Текст приглашения (ПЕРЕВЕДЕН В ЗЕЛЕНЫЙ КЛАСС) -->
-    <div class="scroll-block block-sage" style="border-top: 1px solid rgba(74,59,50,0.06);">
+    <div class="scroll-block block-sage" style="border-top: 1px solid rgba(74,59,50,0.06); padding-top: 100px; padding-bottom: 110px;">
         <div class="exact-frame-container"><svg><use href="#new-exact-pattern"/></svg></div>
         <div class="bg-magic"><div class="petal petal-2"></div><div class="petal petal-3"></div><div class="sparkle sp-2"></div></div>
         <div class="flower-garland top-flowers"></div>
         
-        <h2>Дорогие близкие и друзья!</h2>
-        <svg class="vignette" style="display: inline-block; margin-bottom: 20px;"><use href="#vignette-pattern"/></svg>
-        <p style="max-width: 440px; font-size: 1.05rem; font-weight: 300; padding: 0 10px; position: relative; z-index: 3; line-height: 1.8;">Один день в этом году будет для нас особенным, и мы хотим провести его с вами. Приглашаем вас разделить радость создания нашей семьи!</p>
-        <svg class="vignette" style="display: inline-block; transform: rotate(180deg); margin-top: 20px;"><use href="#vignette-pattern"/></svg>
+        <h2 style="margin-top: -15px; margin-bottom: 10px;">Легенда о зачарованном саде</h2>
+        <svg class="vignette" style="display: inline-block; margin-bottom: 15px;"><use href="#vignette-pattern"/></svg>
         
+        <div style="max-width: 520px; font-size: 1.05rem; font-weight: 300; padding: 0 15px; position: relative; z-index: 3; line-height: 1.75; text-align: center;">
+            <p style="margin-bottom: 15px;">Когда два человека под знаком зодиака Скорпион встречают друг друга, обретая любовь, им открывает свои врата зачарованный сад. Но происходит это лишь однажды за жизнь.</p>
+            <p style="margin-bottom: 4px; font-style: italic; opacity: 0.95;">Река становится дорогой.</p>
+            <p style="margin-bottom: 4px; font-style: italic; opacity: 0.95;">Лодка — началом путешествия.</p>
+            <p style="margin-bottom: 15px; font-style: italic; opacity: 0.95;">А цветы начинают цвести немного ярче обычного.</p>
+            <p style="margin-bottom: 20px;">Именно в этом саду рождается их семья.</p>
+            <p style="margin-bottom: 8px; font-weight: 400;">В этом году двери этого сада откроются для нас.</p>
+            <p style="font-weight: 400;">И нам очень важно разделить этот особенный день с Вами.</p>
+        </div>
+        
+        <svg class="vignette" style="display: inline-block; transform: rotate(180deg); margin-top: 15px;"><use href="#vignette-pattern"/></svg>
         <div class="flower-garland bottom-flowers"></div>
     </div>
 
-    <!-- БЛОК 3: Место проведения (ОСТАЛСЯ КРЕМОВЫМ) -->
     <div class="scroll-block bg-beige-block" style="border-top: 1px solid rgba(74,59,50,0.06);">
         <div class="exact-frame-container"><svg><use href="#new-exact-pattern"/></svg></div>
         <div class="flower-garland top-flowers"></div>
@@ -190,21 +181,17 @@
         <h2>Место проведения</h2>
         <div class="location-grid">
             <div class="location-photo" style="background-image: url('loc1.jpg');"></div>
-            
             <div class="location-text">
                 <svg class="vignette" style="margin-bottom: 20px; display: inline-block;"><use href="#vignette-pattern"/></svg>
                 <p style="font-size: 1.1rem; font-weight: 500; margin-bottom: 12px; color: #2e3b2f;">База отдыха «Красная Гора»</p>
                 <p style="font-size: 0.95rem; font-weight: 300; opacity: 0.9; line-height: 1.6; margin-bottom: 25px;">Наше торжество пройдёт в живописном месте посёлка Татарский Саракташ. Чистый загородный воздух, вековые деревья и уютная атмосфера площадки сделают этот день незабываемым.</p>
                 <svg class="vignette" style="display: inline-block; transform: rotate(180deg);"><use href="#vignette-pattern"/></svg>
             </div>
-            
             <div class="location-photo" style="background-image: url('loc2.jpg');"></div>
         </div>
-        
         <div class="flower-garland bottom-flowers"></div>
     </div>
 
-    <!-- БЛОК 4: Обратный отсчёт (ОСТАЛСЯ ЗЕЛЕНЫМ) -->
     <div class="scroll-block block-sage">
         <div class="exact-frame-container"><svg><use href="#new-exact-pattern"/></svg></div>
         <div class="flower-garland top-flowers"></div>
@@ -215,26 +202,29 @@
             <div class="timer-item"><span class="timer-num" id="v-hours">00</span><span class="timer-lbl">Часов</span></div>
             <div class="timer-item"><span class="timer-num" id="v-mins">00</span><span class="timer-lbl">Мин</span></div>
         </div>
-        
         <div class="flower-garland bottom-flowers"></div>
     </div>
-            <!-- БЛОК 5: Дресс-код -->
-    <div class="scroll-block bg-beige-block" style="border-top: 1px solid rgba(74,59,50,0.06);">
+    <div class="scroll-block bg-beige-block" style="border-top: 1px solid rgba(74,59,50,0.06); padding-top: 100px; padding-bottom: 120px;">
         <div class="exact-frame-container"><svg><use href="#new-exact-pattern"/></svg></div>
         <div class="flower-garland top-flowers"></div>
         
-        <h2>Дресс-код</h2>
-        <p style="max-width: 460px; font-size: 1.05rem; font-weight: 300; padding: 0 10px; position: relative; z-index: 3;">Мы будем искренне признательны, если при выборе праздничных нарядов вы поддержите нежную и благородную атласную палитру нашей свадьбы:</p>
-        <div class="colors-container">
-            <div class="color-card"><div class="color-circle" style="background-color: #3d2f26;"></div><span class="color-name">Шоколад</span></div>
-            <div class="color-card"><div class="color-circle" style="background-color: #d4b2b6;"></div><span class="color-name">Роза</span></div>
-            <div class="color-card"><div class="color-circle" style="background-color: #98a48e;"></div><span class="color-name">Шалфей</span></div>
-            <div class="color-card"><div class="color-circle" style="background-color: #5b768a;"></div><span class="color-name">Атласный синий</span></div>
+        <h2 style="margin-top: -20px; margin-bottom: 15px;">Дресс-код</h2>
+        <p style="max-width: 500px; font-size: 1rem; font-weight: 300; padding: 0 15px; position: relative; z-index: 3; line-height: 1.7; margin-bottom: 10px;">Вдохновляясь оттенками природы, мы собрали нежную палитру для ваших нарядов, которая станет частью атмосферы нашего дня. Будем рады, если Вы поддержите её, но самое главное - чтобы Вы чувствовали себя комфортно.</p>
+        
+        <div class="colors-container" style="max-width: 800px; margin: 25px auto 0 auto; gap: 20px 25px;">
+            <div class="color-card"><div class="color-circle" style="background-color: #3f2f24;"></div><span class="color-name">Кора дуба</span></div>
+            <div class="color-card"><div class="color-circle" style="background-color: #fbf5e6;"></div><span class="color-name">Песчаный берег</span></div>
+            <div class="color-card"><div class="color-circle" style="background-color: #ded7ce;"></div><span class="color-name">Берег реки</span></div>
+            <div class="color-card"><div class="color-circle" style="background-color: #f6d1d8;"></div><span class="color-name">Вуаль лепестков</span></div>
+            <div class="color-card"><div class="color-circle" style="background-color: #bfa1a4;"></div><span class="color-name">Пудровая роза</span></div>
+            <div class="color-card"><div class="color-circle" style="background-color: #9aa089;"></div><span class="color-name">Утренняя роса</span></div>
+            <div class="color-card"><div class="color-circle" style="background-color: #ced5db;"></div><span class="color-name">Лунный свет</span></div>
+            <div class="color-card"><div class="color-circle" style="background-color: #c9e6f3;"></div><span class="color-name">Гладь реки</span></div>
+            <div class="color-card"><div class="color-circle" style="background-color: #4a75a0;"></div><span class="color-name">Звёздная ночь</span></div>
         </div>
         <div class="flower-garland bottom-flowers"></div>
     </div>
 
-    <!-- БЛОК 6: RSVP Анкета -->
     <div class="scroll-block block-sage" id="rsvp-section" style="border-top: 1px solid rgba(74,59,50,0.06); padding-bottom: 180px;">
         <div class="exact-frame-container"><svg><use href="#new-exact-pattern"/></svg></div>
         <div class="flower-garland top-flowers"></div>
@@ -261,16 +251,13 @@
         <div class="flower-garland bottom-flowers"></div>
     </div>
 
-    <!-- БЛОК 7: Финальная страница (НОВАЯ БЕЖЕВАЯ СТРАНИЦА, СТРОКА ПОДНЯТА, ГЕРБ УВЕЛИЧЕН) -->
     <div class="scroll-block bg-beige-block" style="border-top: 1px solid rgba(74,59,50,0.06); padding-bottom: 160px;">
         <div class="exact-frame-container"><svg><use href="#new-exact-pattern"/></svg></div>
         <div class="flower-garland top-flowers"></div>
         
-        <!-- Заголовок поднят на один уровень выше, шрифт каллиграфический -->
         <h2 style="margin-top: -10px; font-size: 2.5rem; margin-bottom: 10px;">Будем рады вас видеть!</h2>
         <h2 style="font-size: 2.1rem; margin-bottom: 30px;">С любовью,</h2>
         
-        <!-- Размер герба увеличен до 190px для красивого весомого акцента -->
         <div style="margin: 0 auto; width: 190px; height: 190px; border-radius: 50%; background: url('crest.png') center/contain no-repeat; position: relative; z-index: 3; filter: drop-shadow(0 12px 30px rgba(74,59,50,0.18));"></div>
         
         <div class="flower-garland bottom-flowers"></div>
@@ -294,4 +281,3 @@
     </script>
 </body>
 </html>
-
