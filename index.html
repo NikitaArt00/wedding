@@ -8,25 +8,22 @@
     <style>
         :root {
             --bg-sage: #738466; 
-            --bg-cream: #f3e5d8; /* РОСКОШНЫЙ ЗОЛОТИСТО-БЕЖЕВЫЙ ОТТЕНОК ФОНА */
-            --txt-choco: #4a3b32; 
-            --txt-white: #ffffff; 
-            --accent-gold: #b59f7a;
+            --bg-cream: #ebdccb; /* ВОЗВРАЩЕН ИСХОДНЫЙ КРЕМОВО-БЕЖЕВЫЙ ЦВЕТ */
+            --txt-choco: #4a3b32;
+            --txt-white: #ffffff; --accent-gold: #b59f7a;
         }
-        /* ВОЗВРАЩЕН ПРЕЖНИЙ ЭЛЕГАНТНЫЙ КУРСИВ ДЛЯ ВСЕГО ТЕКСТА САЙТА */
-        html, body { margin: 0 !important; padding: 0 !important; background-color: var(--bg-cream) !important; font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--txt-choco); text-align: center; scroll-behavior: smooth; }
+        html, body { margin: 0 !important; padding: 0 !important; background-color: var(--bg-cream) !important; font-family: 'Montserrat', sans-serif; font-style: normal; color: var(--txt-choco); text-align: center; scroll-behavior: smooth; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
         .scroll-block { width: 100%; padding: 160px 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: visible !important; }
         .bg-beige-block { background-color: var(--bg-cream) !important; color: var(--txt-choco) !important; }
-        .bg-beige-block h1, .bg-beige-block h2 { color: var(--txt-choco) !important; }
         
-        /* ПОЛНОЕ ВЫРАВНИВАНИЕ ЦВЕТА И КУРСИВА ТЕКСТОВ */
-        .bg-beige-block p, .bg-beige-block div, .bg-beige-block span { color: var(--txt-choco) !important; font-style: italic !important; }
+        .bg-beige-block h1, .bg-beige-block h2 { color: var(--txt-choco) !important; }
+        .bg-beige-block p, .bg-beige-block .label-value, .bg-beige-block .label-title, .bg-beige-block span { color: var(--txt-choco) !important; font-style: normal !important; }
         
         .block-sage { background: linear-gradient(135deg, #5c6b4e, #435236) !important; color: var(--txt-white) !important; padding: 160px 20px; }
         .block-sage h2 { color: var(--txt-white) !important; }
-        .block-sage p, .block-sage span, .block-sage label { color: var(--txt-white) !important; font-style: italic !important; }
+        .block-sage p, .block-sage .timer-lbl, .block-sage span, .block-sage label { color: var(--txt-white) !important; font-style: normal !important; }
 
         .bg-magic { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; overflow: hidden; }
         .petal { position: absolute; background: rgba(255, 255, 255, 0.45); border-radius: 150px 10px 150px 120px; animation: floatPetal 12s linear infinite; }
@@ -80,9 +77,8 @@
         .timer-num { font-size: 2.2rem; font-weight: 600; display: block; line-height: 1.1; }
         .timer-lbl { font-size: 0.75rem; text-transform: uppercase; opacity: 0.85; letter-spacing: 1px; margin-top: 5px; }
 
-        /* ИСПРАВЛЕННЫЙ РОСКОШНЫЙ ФОН САМОЙ КАРТОЧКИ АНКЕТЫ И ПРЕЖНИЙ КУРСИВ */
-        .form-box { background: var(--bg-cream) !important; padding: 40px 30px; border-radius: 16px; border: 1px solid rgba(74,59,50,0.15); width: 100%; max-width: 440px; text-align: left; margin-top: 10px; box-shadow: 0 15px 45px rgba(0,0,0,0.12); position: relative; z-index: 3; }
-        .form-box label { color: var(--txt-choco) !important; font-style: italic !important; }
+        .form-box { background: var(--bg-cream) !important; padding: 40px 30px; border-radius: 16px; border: 1px solid rgba(74,59,50,0.15); width: 100%; max-width: 440px; text-align: left; margin-top: 10px; box-shadow: 0 12px 35px rgba(0,0,0,0.04); position: relative; z-index: 3; }
+        .form-box label { color: var(--txt-choco) !important; }
         .row { margin-bottom: 20px; }
         .radios { display: flex; gap: 25px; margin-top: 6px; }
         .radios label { font-weight: 400; cursor: pointer; display: flex; align-items: center; gap: 6px; font-size: 0.95rem; }
@@ -112,20 +108,18 @@
                 border-radius: 120px 120px 0 0; pointer-events: none; z-index: 5;
             } 
             
-            /* ВОЗВРАЩЕН ПОЛНЫЙ МОБИЛЬНЫЙ КУРСИВ ДЛЯ ВСЕХ ЭЛЕМЕНТОВ */
-            p, .label-value, .label-title, span, label { font-size: 0.95rem !important; line-height: 1.7 !important; font-style: italic !important; }
+            p, .label-value, .label-title, span, label { font-size: 0.95rem !important; line-height: 1.7 !important; font-style: normal !important; }
             .bg-beige-block p, .bg-beige-block .label-value, .bg-beige-block .label-title, .bg-beige-block span { color: var(--txt-choco) !important; }
+            
+            .block-sage div p { font-style: italic !important; }
             
             .location-grid { flex-direction: column !important; gap: 20px !important; padding: 0 !important; margin: 10px auto !important; } 
             .location-text { margin-top: 0 !important; max-width: 100% !important; } 
             .location-photo { width: 100% !important; max-width: 300px !important; height: 190px !important; border-radius: 12px !important; } 
             .colors-container { gap: 15px !important; margin: 20px 0 !important; }
             .color-circle { width: 50px !important; height: 50px !important; }
-            
-            /* МОБИЛЬНЫЙ ЗOЛOТOЙ ФOН КАРТOЧКИ ФOРМЫ С КУРСИВOМ */
-            .form-box { padding: 30px 20px !important; width: 100% !important; max-width: 340px !important; background: var(--bg-cream) !important; margin: 0 auto !important; box-shadow: 0 12px 35px rgba(0,0,0,0.1) !important; border: 1px solid rgba(74,59,50,0.15) !important; }
-            .form-box label { color: var(--txt-choco) !important; font-style: italic !important; }
-            
+            .form-box { padding: 30px 20px !important; width: 100% !important; max-width: 340px !important; background: var(--bg-cream) !important; margin: 0 auto !important; box-shadow: 0 10px 30px rgba(0,0,0,0.05) !important; border: 1px solid rgba(74,59,50,0.15) !important; }
+            .form-box label { color: var(--txt-choco) !important; }
             .timer-grid { gap: 10px !important; margin: 25px 0 !important; }
             .timer-item { padding: 15px 8px !important; min-width: 70px !important; }
             .timer-num { font-size: 1.8rem !important; font-style: normal !important; }
