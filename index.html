@@ -224,7 +224,7 @@
         </div>
         <div class="flower-garland bottom-flowers"></div>
     </div>
-                <!-- БЛОК 5: Дресс-код -->
+        <!-- БЛОК 5: Дресс-код -->
     <div class="scroll-block bg-beige-block" style="border-top: 1px solid rgba(74,59,50,0.06); padding-top: 100px; padding-bottom: 120px;">
         <div class="exact-frame-container"><svg><use href="#new-exact-pattern"/></svg></div>
         <div class="flower-garland top-flowers"></div>
@@ -256,21 +256,27 @@
         <p style="margin-bottom: 25px; font-weight: 300; opacity: 0.85; position: relative; z-index: 3;">Пожалуйста, ответьте на вопросы анкеты ниже:</p>
         
         <div class="form-box" style="margin: 0 auto; padding: 40px 35px; border-radius: 18px; width: 100%; max-width: 440px;">
-            <form id="rsvp-form">
+            <!-- ПРЯМАЯ И АБСОЛЮТНО НАДЕЖНАЯ ОТПРАВКА ЧЕРЕЗ ФОРМСАБМИТ -->
+            <form action="https://formsubmit.co" method="POST">
+                
+                <!-- Сервисные настройки, чтобы не было спама и капчи -->
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_subject" value="Новый ответ на свадебное приглашение!">
+                <input type="hidden" name="_template" value="table">
+
                 <div class="row" style="margin-bottom: 25px;">
                     <label style="display: block; text-align: left; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem; color: #4a3b32;">Ваше имя и фамилия:</label>
-                    <input type="text" id="r-name" required placeholder="Иван и Анна" style="width: 100%; padding: 14px; border: 1px solid #ccd6cc; border-radius: 8px; font-size: 0.95rem; color: #4a3b32; background: #fff; font-style: normal !important;">
+                    <input type="text" name="Имя гостя" required placeholder="Иван и Анна" style="width: 100%; padding: 14px; border: 1px solid #ccd6cc; border-radius: 8px; font-size: 0.95rem; color: #4a3b32; background: #fff; font-style: normal !important;">
                 </div>
                 <div class="row" style="margin-bottom: 30px;">
                     <label style="display: block; text-align: left; font-weight: 600; margin-bottom: 12px; font-size: 0.9rem; color: #4a3b32;">Сможете ли вы прийти?</label>
                     <div class="radios" style="display: flex; gap: 25px; justify-content: flex-start;">
-                        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 0.95rem; font-weight: 400; color: #4a3b32;"><input type="radio" name="attendance" value="Да, с радостью" checked style="width:18px; height:18px; accent-color:#738466;"> Да, с радостью</label>
-                        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 0.95rem; font-weight: 400; color: #4a3b32;"><input type="radio" name="attendance" value="К сожалению, нет" style="width:18px; height:18px; accent-color:#738466;"> К сожалению, нет</label>
+                        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 0.95rem; font-weight: 400; color: #4a3b32;"><input type="radio" name="Присутствие" value="Да, с радостью" checked style="width:18px; height:18px; accent-color:#738466;"> Да, с радостью</label>
+                        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 0.95rem; font-weight: 400; color: #4a3b32;"><input type="radio" name="Присутствие" value="К сожалению, нет" style="width:18px; height:18px; accent-color:#738466;"> К сожалению, нет</label>
                     </div>
                 </div>
                 <button type="submit" class="submit-btn" style="width: 100%; padding: 15px; background: #3d2f26; color: #fff; border: none; border-radius: 8px; font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; cursor: pointer;">Отправить ответ</button>
             </form>
-            <div id="msg" style="display: none; padding: 15px; background: #e6f4ea; color: #137333; border-radius: 8px; font-weight: 600; text-align: center; font-size: 0.95rem; font-style: normal !important;">Спасибо! Ваш ответ успешно сохранен.</div>
         </div>
         <div class="flower-garland bottom-flowers"></div>
     </div>
@@ -302,33 +308,6 @@
             }
         }
         setInterval(clock, 1000); clock();
-
-        // НАДЕЖНЫЙ ОБНОВЛЕННЫЙ AJAX-СКРИПТ БЕЗ ПЕРЕЗАГРУЗОК СТРАНИЦЫ
-        var form = document.getElementById("rsvp-form");
-        form.addEventListener("submit", function(ev) {
-            ev.preventDefault();
-            
-            var nameValue = document.getElementById("r-name").value;
-            var attendanceValue = form.querySelector('input[name="attendance"]:checked').value;
-            
-            var formData = new FormData();
-            formData.append("Имя гостя", nameValue);
-            formData.append("Присутствие", attendanceValue);
-            formData.append("_email.to", "nikitaartamonov00@mail.ru");
-
-            fetch("https://formcarry.com", {
-                method: "POST",
-                headers: { "Accept": "application/json" },
-                body: formData
-            }).then(function(response) {
-                form.style.display = 'none';
-                document.getElementById('msg').style.display = 'block';
-                form.reset();
-            }).catch(function(error) {
-                form.style.display = 'none';
-                document.getElementById('msg').style.display = 'block';
-            });
-        });
     </script>
 </body>
 </html>
