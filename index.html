@@ -39,10 +39,10 @@
         .block-sage .exact-frame-container { color: rgba(255, 255, 255, 0.35) !important; }
         .exact-frame-container svg { width: 100%; height: 100%; display: block; }
 
-        /* ИСПРАВЛЕННЫЙ ОТСТУП: Развели цветы, теперь они лежат строго центрами на линиях */
+        /* ИСПРАВЛЕННЫЙ ОТСТУП ДЛЯ ПК: Развели цветы к внешним краям рамок */
         .flower-garland { position: absolute; width: 100%; max-width: 480px; height: 120px; pointer-events: none; z-index: 4; left: 50%; transform: translateX(-50%); background-size: contain; background-repeat: no-repeat; background-position: center; }
-        .top-flowers { top: -14px !important; background-image: url('flowers_top.png') !important; } 
-        .bottom-flowers { bottom: -14px !important; background-image: url('flowers_bottom.png') !important; }
+        .top-flowers { top: -42px !important; background-image: url('flowers_top.png') !important; } 
+        .bottom-flowers { bottom: -42px !important; background-image: url('flowers_bottom.png') !important; }
 
         .vignette { width: 120px; height: 20px; margin: 0 auto 15px auto; pointer-events: none; opacity: 0.7; position: relative; z-index: 3; color: var(--txt-choco); }
         .block-sage .vignette { color: var(--txt-white) !important; }
@@ -70,7 +70,7 @@
         .timer-grid { display: flex; gap: 15px; margin: 35px 0; position: relative; z-index: 3; }
         .timer-item { background: rgba(255,255,255,0.15); padding: 20px; border-radius: 14px; min-width: 85px; backdrop-filter: blur(5px); box-shadow: 0 6px 20px rgba(0,0,0,0.04); border: 1px solid rgba(255,255,255,0.1); }
         .timer-num { font-size: 2.2rem; font-weight: 600; display: block; line-height: 1.1; }
-        .timer-lbl { font-size: 0.75rem; text-transform: uppercase; opacity: 0.85; letter-spacing: 1px; margin-top: 5px; }
+        .timer-lbl { font-size: 0.75rem; text-transform: uppercase; opacity: 0.85; margin-top: 5px; }
 
         .form-box { background: rgba(255, 255, 255, 0.7); padding: 40px 30px; border-radius: 16px; border: 1px solid rgba(74,59,50,0.12); width: 100%; max-width: 440px; text-align: left; margin-top: 10px; box-shadow: 0 12px 35px rgba(0,0,0,0.04); position: relative; z-index: 3; }
         .row { margin-bottom: 20px; }
@@ -81,7 +81,7 @@
             /* Блоки автоматически растягиваются под высоту контента */
             .scroll-block { padding: 120px 20px 140px 20px !important; height: auto !important; min-height: 100vh !important; } 
             
-            /* Полное отключение старой сжимающей рамки для спасения анкеты */
+            /* Полное exclusion старой сжимающей рамки для спасения анкеты */
             .exact-frame-container { display: none !important; } 
             
             /* Гибкая рамка следует за текстом на смартфонах */
@@ -91,10 +91,10 @@
             }
             .block-sage::before { border-color: rgba(255, 255, 255, 0.35) !important; }
             
-            /* МОБИЛЬНЫЕ ОТСТУПЫ ЦВЕТОВ: Ложатся центрами ровно на линию 15px */
+            /* КАРДИНАЛЬНОЕ УВЕЛИЧЕНИЕ ОТСТУПОВ: Цветы разведены к внешним краям рамок */
             .flower-garland { width: 250px; height: 80px; } 
-            .top-flowers { top: -25px !important; background-image: url('flowers_top.png') !important; } 
-            .bottom-flowers { bottom: -25px !important; background-image: url('flowers_bottom.png') !important; } 
+            .top-flowers { top: -42px !important; background-image: url('flowers_top.png') !important; } 
+            .bottom-flowers { bottom: -42px !important; background-image: url('flowers_bottom.png') !important; } 
             
             h1 { font-size: 2.3rem !important; margin-bottom: 5px; } 
             h2 { font-size: 1.7rem !important; margin-bottom: 15px; } 
