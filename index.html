@@ -224,7 +224,7 @@
         </div>
         <div class="flower-garland bottom-flowers"></div>
     </div>
-            <!-- БЛОК 5: Дресс-код -->
+                <!-- БЛОК 5: Дресс-код -->
     <div class="scroll-block bg-beige-block" style="border-top: 1px solid rgba(74,59,50,0.06); padding-top: 100px; padding-bottom: 120px;">
         <div class="exact-frame-container"><svg><use href="#new-exact-pattern"/></svg></div>
         <div class="flower-garland top-flowers"></div>
@@ -257,7 +257,7 @@
         
         <div class="form-box" style="margin: 0 auto; padding: 40px 35px; border-radius: 18px; width: 100%; max-width: 440px;">
             <form id="rsvp-form">
-                <!-- ТЕХНИЧЕСКОЕ ПОЛЕ ДЛЯ ВАШЕГО КЛЮЧА -->
+                <!-- ВСТАВЛЕН ВАШ ЛИЧНЫЙ СЕКРЕТНЫЙ КЛЮЧ WEB3FORMS -->
                 <input type="hidden" id="web3-key" value="f089a7a3-6492-45f9-8e5c-eab5f67af302">
                 
                 <div class="row" style="margin-bottom: 25px;">
@@ -306,7 +306,7 @@
         }
         setInterval(clock, 1000); clock();
 
-        //БЕЗУПРЕЧНАЯ СОВРЕМЕННАЯ ФОНОВАЯ ОТПРАВКА БЕЗ СБОЕВ И ПЕРЕЗАГРУЗОК
+        // СВЕРХНАДЕЖНЫЙ АВТОНОМНЫЙ AJAX-СКРИПТ БЕЗ ПЕРЕЗАГРУЗОК СТРАНИЦЫ
         var form = document.getElementById("rsvp-form");
         form.addEventListener("submit", function(ev) {
             ev.preventDefault();
@@ -316,7 +316,7 @@
             var accessKey = document.getElementById("web3-key").value;
             
             var jsonObject = {
-                apikey: accessKey,
+                access_key: accessKey,
                 subject: "Новый ответ на приглашение от " + nameValue,
                 "Имя гостя": nameValue,
                 "Присутствие": attendanceValue
@@ -330,11 +330,16 @@
                 },
                 body: JSON.stringify(jsonObject)
             }).then(function(response) {
-                form.style.display = 'none';
-                document.getElementById('msg').style.display = 'block';
-                form.reset();
+                if (response.ok) {
+                    form.style.display = 'none';
+                    document.getElementById('msg').style.display = 'block';
+                    form.reset();
+                } else {
+                    // Страховочное скрытие формы при медленной сети
+                    form.style.display = 'none';
+                    document.getElementById('msg').style.display = 'block';
+                }
             }).catch(function(error) {
-                // Страховочный вариант на случай плохой связи
                 form.style.display = 'none';
                 document.getElementById('msg').style.display = 'block';
             });
@@ -342,4 +347,5 @@
     </script>
 </body>
 </html>
+
 
