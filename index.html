@@ -13,7 +13,6 @@
         html, body { margin: 0 !important; padding: 0 !important; background-color: var(--bg-cream) !important; font-family: 'Montserrat', sans-serif; color: var(--txt-choco); text-align: center; scroll-behavior: smooth; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
-        /* ВКЛЮЧЕНА ВИДИМОСТЬ ГРАНИЦ, ЧТОБЫ БУТОНЫ РОЗ НЕ ОБРЕЗАЛИСЬ */
         .scroll-block { width: 100%; padding: 160px 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: visible !important; }
         .bg-beige-block { background-color: var(--bg-cream) !important; color: var(--txt-choco) !important; }
         .bg-beige-block h1, .bg-beige-block h2, .bg-beige-block p { color: var(--txt-choco) !important; }
@@ -40,10 +39,10 @@
         .block-sage .exact-frame-container { color: rgba(255, 255, 255, 0.35) !important; }
         .exact-frame-container svg { width: 100%; height: 100%; display: block; }
 
-        /* ЖЕСТКАЯ ПОСАДКА ДВУХ РАЗДЕЛЬНЫХ ИЗОБРАЖЕНИЙ СЕРЕДИНОЙ ПРЯМО НА ЛИНИЮ */
+        /* ИСПРАВЛЕННЫЙ ОТСТУП: Развели цветы, теперь они лежат строго центрами на линиях */
         .flower-garland { position: absolute; width: 100%; max-width: 480px; height: 120px; pointer-events: none; z-index: 4; left: 50%; transform: translateX(-50%); background-size: contain; background-repeat: no-repeat; background-position: center; }
-        .top-flowers { top: -30px !important; background-image: url('flowers_top.png') !important; } 
-        .bottom-flowers { bottom: -30px !important; background-image: url('flowers_bottom.png') !important; }
+        .top-flowers { top: -14px !important; background-image: url('flowers_top.png') !important; } 
+        .bottom-flowers { bottom: -14px !important; background-image: url('flowers_bottom.png') !important; }
 
         .vignette { width: 120px; height: 20px; margin: 0 auto 15px auto; pointer-events: none; opacity: 0.7; position: relative; z-index: 3; color: var(--txt-choco); }
         .block-sage .vignette { color: var(--txt-white) !important; }
