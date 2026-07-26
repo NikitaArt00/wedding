@@ -88,11 +88,11 @@
         .fade-up { opacity: 0; transform: translateY(30px); animation: textFadeUp 1s cubic-bezier(0.25, 1, 0.5, 1) forwards; }
         .del-1 { animation-delay: 0.3s; } .del-2 { animation-delay: 0.6s; } .del-3 { animation-delay: 0.9s; } .del-4 { animation-delay: 1.2s; }
         @keyframes textFadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        @media (max-width: 1024px) { 
+                @media (max-width: 1024px) { 
             .scroll-block { padding: 120px 20px 140px 20px !important; height: auto !important; min-height: 100vh !important; } 
             .exact-frame-container { display: none !important; } 
             .scroll-block::before { content: ""; position: absolute; top: 15px; bottom: 15px; left: 15px; right: 15px; border: 2px solid var(--txt-choco); border-radius: 14px; opacity: 0.9; pointer-events: none; z-index: 2; }
-            .scroll-block::before { border-color: var(--txt-choco) !important; }
+            .bg-beige-block::before { border-color: var(--txt-choco) !important; }
             .block-sage::before { border-color: rgba(255, 255, 255, 0.35) !important; }
             .flower-garland { width: 250px; height: 80px; } 
             .top-flowers { top: -42px !important; background-image: url('flowers_top.png') !important; } 
@@ -108,18 +108,30 @@
                 border-radius: 120px 120px 0 0; pointer-events: none; z-index: 5;
             } 
             
-            p, .label-value, .label-title, span, label { font-size: 0.95rem !important; line-height: 1.7 !important; font-style: normal !important; }
+            /* ЖЕСТКИЙ СБРОС ИСКАЖЕНИЙ IPHONE ДЛЯ ИДЕАЛЬНОГО МОБИЛЬНОГО КУРСИВА */
+            p, .label-value, .label-title, span, label { 
+                font-family: 'Montserrat', sans-serif !important;
+                font-size: 0.95rem !important; 
+                line-height: 1.7 !important; 
+                font-style: italic !important; 
+                letter-spacing: normal !important; /* Убираем дикое растягивание букв на iOS */
+                text-transform: none !important;
+            }
             .bg-beige-block p, .bg-beige-block .label-value, .bg-beige-block .label-title, .bg-beige-block span { color: var(--txt-choco) !important; }
             
-            .block-sage div p { font-style: italic !important; }
+            /* СОХРАНЯЕМ ПРЯМОЙ СТИЛЬ ТОЛЬКО ДЛЯ ТЕХНИЧЕСКИХ КОМПОНЕНТОВ */
+            .label-title { font-size: 0.75rem !important; letter-spacing: 1px !important; text-transform: uppercase !important; font-style: normal !important; }
+            .color-name { font-style: normal !important; font-weight: 500 !important; }
             
             .location-grid { flex-direction: column !important; gap: 20px !important; padding: 0 !important; margin: 10px auto !important; } 
             .location-text { margin-top: 0 !important; max-width: 100% !important; } 
             .location-photo { width: 100% !important; max-width: 300px !important; height: 190px !important; border-radius: 12px !important; } 
             .colors-container { gap: 15px !important; margin: 20px 0 !important; }
             .color-circle { width: 50px !important; height: 50px !important; }
+            
             .form-box { padding: 30px 20px !important; width: 100% !important; max-width: 340px !important; background: var(--bg-cream) !important; margin: 0 auto !important; box-shadow: 0 10px 30px rgba(0,0,0,0.05) !important; border: 1px solid rgba(74,59,50,0.15) !important; }
-            .form-box label { color: var(--txt-choco) !important; }
+            .form-box label { color: var(--txt-choco) !important; font-style: normal !important; font-weight: 600 !important; }
+            
             .timer-grid { gap: 10px !important; margin: 25px 0 !important; }
             .timer-item { padding: 15px 8px !important; min-width: 70px !important; }
             .timer-num { font-size: 1.8rem !important; font-style: normal !important; }
